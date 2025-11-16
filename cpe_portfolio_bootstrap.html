@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPE 212 Portfolio</title>
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #d9d9d9;
+            font-family: Helvetica, sans-serif;
+        }
+
+        header {
+            background-color: #f39b5c;
+            padding: 15px 40px;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .main-title {
+            text-align: center;
+            font-size: 60px;
+            font-weight: 900;
+            margin-top: 40px;
+        }
+
+        .divider {
+            width: 90%;
+            height: 8px;
+            background-color: #f39b5c;
+            margin: 0 auto 40px auto;
+        }
+
+        /* Button styling */
+        .menu-btn {
+            background-color: #f39b5c;
+            border: 6px solid white;
+            border-radius: 35px;
+            font-size: 28px;
+            font-weight: 700;
+            padding: 25px 0;
+            transition: 0.3s ease;
+            color: black;
+        }
+
+        .menu-btn:hover {
+            background-color: #ffb983;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .right-panel {
+            background: white;
+            border-radius: 35px;
+            padding: 35px;
+        }
+
+        .right-panel h2 {
+            font-weight: 900;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 40px;
+            }
+
+            .menu-btn {
+                font-size: 24px;
+                padding: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>CPE 212 - AUTOMATING SERVER MANAGEMENT</header>
+
+    <h1 class="main-title">CPE 212 PORTFOLIO</h1>
+    <div class="divider"></div>
+
+    <div class="container py-4">
+        <div class="row justify-content-center g-5">
+
+            <!-- LEFT SIDE BUTTONS -->
+            <div class="col-lg-4 d-flex flex-column gap-4">
+                <a href="#prelim" class="menu-btn text-center text-decoration-none">PRELIM HOAs</a>
+                <a href="#midterm" class="menu-btn text-center text-decoration-none">MIDTERM HOAs</a>
+                <a href="#finals" class="menu-btn text-center text-decoration-none">FINALS HOAs</a>
+                <a href="#skills" class="menu-btn text-center text-decoration-none">SKILLS EXAMS</a>
+            </div>
+
+            <!-- RIGHT SIDE PANEL -->
+            <div class="col-lg-7 right-panel shadow">
+                <h2 class="text-center mb-3">CALVIN EARL PLANTA</h2>
+                <p>
+                    This course taught more about the Linux environment, especially about server management and 
+                    automation using Ansible. I learned a lot about ansible's fundamentals, such as the packages 
+                    and prerequisites to be installed in order for ansible to run smoothly, the servers and 
+                    manage nodes with appropriate ssh configurations, and the essential files to create 
+                    (configuration and inventory file) for ansible automation. In addition to that, I also learned 
+                    about containerization technology using a tool called Docker, which is a powerful technology 
+                    that allows administrators to isolate applications and deploy webapps, software applications.
+                </p>
+
+                <p>
+                    At the start of this course, I was introduced to server management by creating a workstation 
+                    and Server node setup, which required running multiple virtual machines at once. After completing 
+                    the ssh setup and configuration for all nodes, I had a clear idea of how companies and corporations 
+                    manage their servers. I then proceeded to learn how to use Ansible, and as the course progressed, 
+                    I learned more techniques in using Ansible, such as using variables from configuration file inputs, 
+                    playbook consolidation, and applying roles. I also learned how to use Docker to containerize 
+                    applications, allowing us to use the contained app without worrying about dependencies. I also 
+                    learned that Docker can be used to deploy web applications, and by combining containerization and 
+                    automation, I realized that this is one method that successful corporations, like Netflix and IBM, 
+                    use to operate to deploy their services.
+                </p>
+
+                <p>
+                    Overall, this course taught me valuable skills in system administration, automation, and 
+                    containerization within the Linux environment. By mastering tools like Ansible and Docker, I 
+                    gained practical experience in managing and deploying systems efficiently. This knowledge equips 
+                    me with in-demand skills that may open many job opportunities in areas like DevOps, cloud 
+                    computing, and IT infrastructure management in the future.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
