@@ -1,0 +1,28 @@
+---
+- hosts: ubuntu
+  become: true
+  tasks:
+
+  - name: Copy project files to server
+    copy:
+      src: ./
+      dest: /CPE212_finalproject_planta/website
+      owner: root
+      group: root
+      mode: 0755
+
+  - name: build docker image
+    community.docker.docker_image:
+      name: portfolio_website
+      build:
+        path: /CPE212_finalproject_planta/website
+      source: build
+
+  - name: run website container
+    community.docker.docker_container:
+      name: portfolio_site
+      image: portfolio_website
+      state: started
+      restart_policy: always
+      ports:
+        - "8080:80"
