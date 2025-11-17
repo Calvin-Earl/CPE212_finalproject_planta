@@ -29,7 +29,7 @@
             justify-content: flex-start;
             align-items: flex-start;
             padding-top: 75px;
-            font-size: 2em;
+            font-size: 1.3em;
             font-weight: bold;
             color: black;
         }
@@ -37,7 +37,7 @@
             background: none;
             border: none;
             color: black;
-            font-size: 1em;
+            font-size: 0.9em;
             font-weight: bold;
             margin-bottom: 28px;
             margin-left: 24px;
@@ -48,6 +48,10 @@
         }
         .sidebar button:hover {
             color: #fff;
+        }
+        .sidebar button.active-btn {
+            background-color: #ad4c00 !important;
+            color: #fff !important;
         }
         .main-content {
             flex: 1;
@@ -73,9 +77,9 @@
         .pdf-preview-box {
             background: #fff;
             border-radius: 32px;
-            width: 80%;
-            max-width: 950px;
-            height: 350px;
+            width: 95%;
+            max-width: 1200px;
+            height: 400px;
             min-height: 220px;
             display: flex;
             align-items: center;
@@ -99,10 +103,10 @@
     </header>
     <div class="container">
         <div class="sidebar">
-            <button onclick="previewPDF('Planta_HOA-1.1.pdf')">Hands-on-Activity 1.1</button>
-            <button onclick="previewPDF('Planta_HOA-2.1.pdf')">Hands-on-Activity 2.1</button>
-            <button onclick="previewPDF('Planta_HOA-3.1.pdf')">Hands-on-Activity 3.1</button>
-            <button onclick="previewPDF('Planta_HOA-4.1.pdf')">Hands-on-Activity 4.1</button>
+            <button onclick="previewPDF('Planta_HOA1.1.pdf', this)">Hands-on-Activity 1.1</button>
+            <button onclick="previewPDF('Planta_HOA2.1.pdf', this)">Hands-on-Activity 2.1</button>
+            <button onclick="previewPDF('Planta_HOA3.1.pdf', this)">Hands-on-Activity 3.1</button>
+            <button onclick="previewPDF('Planta_HOA4.1.pdf', this)">Hands-on-Activity 4.1</button>
         </div>
         <div class="main-content">
             <div class="hoas-title">PRELIM HOAs</div>
@@ -117,8 +121,16 @@
         // To show PDF previews. You can use <embed> or <iframe>.
         function previewPDF(file) {
             document.getElementById('pdfPreview').innerHTML =
-                `<iframe src="pdf/Planta_HOA1.1.pdf" width="95%" height="330px"></iframe>`;
+                `<iframe src="pdf/${file}" width="95%" height="400px"></iframe>`;
+            var buttons = document.querySelectorAll('.sidebar button');
+            buttons.forEach(b => b.classList.remove('active-btn'));
+            btn.classList.add('active-btn');
         }
+        window.onload = function() {
+            var firstBtn = document.querySelector('.sidebar button');
+            previewPDF('Planta_HOA1.1.pdf', firstBtn);
+            firstBtn.classList.add('active-btn');
+        };
     </script>
 </body>
 </html>
