@@ -1,9 +1,9 @@
 [defaults]
 192.168.56.109
-192.168.56.111
+192.168.56.111 ansible_user=bearl
 
 [ubuntu]
 192.168.56.109
 
 [centos]
-192.168.56.111
+192.168.56.111 ansible_user=bearl

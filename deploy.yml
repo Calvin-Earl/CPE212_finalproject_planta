@@ -1,29 +1,30 @@
 ---
-- hosts: ubuntu
+- hosts: all
   become: true
   tasks:
 
-  - name: Copy website files to server
-    copy:
-      src: website/
-      dest: /CPE212_finalproject_planta/website/
-      owner: root
-      group: root
-      mode: '0755'
+    - name: Copy website files to server
+      copy:
+        src: website/
+        dest: /CPE212_finalproject_planta/website/
+        owner: root
+        group: root
+        mode: '0755'
 
-  - name: build docker image
-    community.docker.docker_image:
-      name: portfolio_site
-      build:
-        path: /CPE212_finalproject_planta/website
-      source: build
-      force_source: true
+    - name: build docker image
+      community.docker.docker_image:
+        name: portfolio_site
+        build:
+          path: /CPE212_finalproject_planta/website
+        source: build
+        docker_host: unix:///var/run/docker.sock
 
-  - name: run website container
-    community.docker.docker_container:
-      name: portfolio_site
-      image: portfolio_site
-      state: started
-      restart_policy: always
-      ports:
-        - "8080:80"
+    - name: run website container
+      community.docker.docker_container:
+        name: portfolio_site
+        image: portfolio_site
+        state: started
+        restart_policy: always
+        published_ports:
+          - "8080:80"
+
