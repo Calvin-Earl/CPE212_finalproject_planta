@@ -16,7 +16,27 @@
             padding: 20px 38px 8px 38px;
             font-weight: bold;
             font-size: 1.55em;
+	    position: relative;
         }
+	.back-btn {
+	    position: absolute;
+	    top: 15px;
+	    right: 38px;
+	    background: #fff;
+	    color: #f39b5c;
+	    border: none;
+	    font-size: 1.2em;
+	    font-weight: bold;
+	    padding: 6px 22px;
+	    border-radius: 22px;
+	    cursor: pointer;
+	    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+	    transition: background 0.2s, color 0.2s;
+	}
+	.back-btn:hover {
+	    background: #f39b5c;
+	    color: #fff;
+	}
         .container {
             display: flex;
             height: calc(100vh - 60px);
@@ -94,12 +114,14 @@
             .sidebar { width: 100vw; flex-direction: row; height: auto; padding: 20px 0; justify-content: center;}
             .main-content { padding: 27px 0; }
             .pdf-preview-box { width: 95%; }
+	    .back-btn { top: 8px; right: 12px; }
         }
     </style>
 </head>
 <body>
     <header>
         CPE 212 - AUTOMATING SERVER MANAGEMENT
+	<button class="back-btn" onclick="location.href='index.html';">Back</button>
     </header>
     <div class="container">
         <div class="sidebar">
@@ -119,7 +141,7 @@
     <div class="footer">© 2025 CPE 212 Final Project</div>
     <script>
         // To show PDF previews. You can use <embed> or <iframe>.
-        function previewPDF(file) {
+        function previewPDF(file, btn) {
             document.getElementById('pdfPreview').innerHTML =
                 `<iframe src="pdf/${file}" width="95%" height="400px"></iframe>`;
             var buttons = document.querySelectorAll('.sidebar button');
