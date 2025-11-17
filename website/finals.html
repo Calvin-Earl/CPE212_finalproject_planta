@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINALS HOAs - CPE 212 Automating Server Management</title>
+    <style>
+        body { margin: 0; font-family: Helvetica, Arial, sans-serif; background-color: #d9d9d9; }
+        header { background-color: #f39b5c; color: #222; padding: 20px 38px 8px 38px; font-weight: bold; font-size: 1.55em; position: relative; }
+        .back-btn { position: absolute; top: 15px; right: 38px; background: #fff; color: #f39b5c; border: none;
+            font-size: 1.2em; font-weight: bold; padding: 6px 22px; border-radius: 22px; cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06); transition: background 0.2s, color 0.2s; }
+        .back-btn:hover { background: #f39b5c; color: #fff; }
+        .container { display: flex; height: calc(100vh - 60px); }
+        .sidebar {
+            background: #ff7f2a; width: 360px; display: flex; flex-direction: column;
+            justify-content: flex-start; align-items: flex-start; padding-top: 75px;
+            font-size: 1.3em; font-weight: bold; color: black;
+        }
+        .sidebar button {
+            background: none; border: none; color: black; font-size: 0.9em;
+            font-weight: bold; margin-bottom: 28px; margin-left: 24px; cursor: pointer;
+            text-align: left; width: 90%; transition: color 0.2s;
+        }
+        .sidebar button:hover { color: #fff; }
+        .sidebar button.active-btn { background-color: #ad4c00 !important; color: #fff !important; }
+        .main-content { flex: 1; background: #e6e6e6; display: flex; flex-direction: column; align-items: center; padding-top: 65px; }
+        .hoas-title { font-size: 4em; font-weight: bold; color: #222; }
+        .orange-divider { margin: 0 auto 24px auto; width: 95%; max-width: 870px; height: 8px; background: #ff7f2a; border-radius: 6px; }
+        .pdf-preview-box { background: #fff; border-radius: 32px; width: 95%; max-width: 1200px; height: 400px; min-height: 220px; display: flex; align-items: center; justify-content: center; font-size: 2em; font-weight: bold; color: #222; border: 2px solid #f3f3f3; }
+        @media (max-width: 900px) { .container { flex-direction: column; } .sidebar { width: 100vw; flex-direction: row; height: auto; padding: 20px 0; justify-content: center;} .main-content { padding: 27px 0; } .pdf-preview-box { width: 95%; } .back-btn { top: 8px; right: 12px; } }
+    </style>
+</head>
+<body>
+    <header>
+        CPE 212 - AUTOMATING SERVER MANAGEMENT
+        <button class="back-btn" onclick="location.href='index.html';">Back</button>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <button onclick="previewPDF('Planta_HOA11.1.pdf', this)">Hands-on-Activity 11.1</button>
+            <button onclick="previewPDF('Planta_HOA12.1.pdf', this)">Hands-on-Activity 12.1</button>
+        </div>
+        <div class="main-content">
+            <div class="hoas-title">FINALS HOAs</div>
+            <div class="orange-divider"></div>
+            <div class="pdf-preview-box" id="pdfPreview">&lt;PDF FILE PREVIEW&gt;</div>
+        </div>
+    </div>
+    <div class="footer">© 2025 CPE 212 Final Project</div>
+    <script>
+        function previewPDF(file, btn) {
+            document.getElementById('pdfPreview').innerHTML =
+                `<iframe src="pdf/${file}" width="95%" height="400px"></iframe>`;
+            var buttons = document.querySelectorAll('.sidebar button');
+            buttons.forEach(b => b.classList.remove('active-btn'));
+            btn.classList.add('active-btn');
+        }
+        window.onload = function() {
+            var firstBtn = document.querySelector('.sidebar button');
+            previewPDF('Planta_HOA11.1.pdf', firstBtn);
+            firstBtn.classList.add('active-btn');
+        };
+    </script>
+</body>
+</html>
