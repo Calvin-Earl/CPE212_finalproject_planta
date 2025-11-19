@@ -11,15 +11,24 @@
         group: root
         mode: '0755'
 
-    - name: build docker image
+    - name: build docker image (ubuntu)
       community.docker.docker_image:
         name: portfolio_site
         build:
           path: /CPE212_finalproject_planta/website
         source: build
-        docker_host: unix:///var/run/docker.sock
+      when: ansible_distribution == "Ubuntu"
 
-    - name: run website container
+    - name: build docker image (centos)
+      community.docker.docker_image:
+        name: portfolio_site
+        build:
+          path: /CPE212_finalproject_planta/website
+        source: build
+        docker_host: tcp://192.168.56.111:2375
+      when: ansible_distribution == "CentOS"
+
+    - name: run website container (ubuntu)
       community.docker.docker_container:
         name: portfolio_site
         image: portfolio_site
@@ -27,4 +36,15 @@
         restart_policy: always
         published_ports:
           - "8080:80"
+      when: ansible_distribution == "Ubuntu"
 
+    - name: run website container (centos)
+      community.docker.docker_container:
+        name: portfolio_site
+        image: portfolio_site
+        state: started
+        restart_policy: always
+        published_ports:
+          - "8080:80"
+        docker_host: tcp://192.168.56.111:2375
+      when: ansible_distribution == "CentOS"
